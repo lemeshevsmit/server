@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/modules/1abd37ee9d6f2c0a4da42b718f511454.min.css">
+    <link rel="stylesheet" id="roboto-subset.css-css"
+          href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5"
+          type="text/css" media="all">
+    <link rel="canonical" href="https://mdbootstrap.com/docs/standard/forms/datetimepicker/">
+    <title>New message</title>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Create new message</h2>
+    </div>
+
+    <form class="needs-validation" th:method="post" th:action="@{/api/messages}" th:object="${message}">
+        <div class="mb-3">
+            <label for="from">Email From:</label>
+            <input th:field="*{from}" type="email" name="from" class="form-control" id="from" placeholder="you@example.com" required="">
+            <div class="invalid-feedback" style="color:red" th:if="${#fields.hasErrors('from')}" th:errors="*{from}">
+                Please enter a valid email address for shipping updates.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="to">Email To:</label>
+            <input th:field="*{to}" type="email" name="to" class="form-control" id="to" placeholder="you@example.com" required="">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('to')}" th:errors="*{to}">
+                Please enter a valid email address for shipping updates.
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="subject">Subject:</label>
+            <input th:field="*{subject}" type="text" name="subject" class="form-control" id="subject" required="">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}">
+                Valid subject is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Input massage:</label>
+            <textarea th:field="*{text}" name="text" class="form-control" id="exampleFormControlTextarea1"
+                      rows="3"></textarea>
+        </div>
+
+        <div>
+            <p></p>
+            <div class="form-outline datetimepicker" style="width: 22rem">
+                <input th:field="*{postDate}" type="text" name="date" class="form-control active" required="" value="22/12/2020, 14:12:56" id="datetimepickerExample" style="margin-bottom: 0px;">
+                <label for="datetimepickerExample" class="form-label" style="margin-left: 0px;">Select Date and Time:</label>
+                <div class="form-notch">
+                    <div class="form-notch-leading" style="width: 9px;"></div>
+                    <div class="form-notch-middle" style="width: 128.8px;"></div>
+                    <div class="form-notch-trailing"></div>
+                </div>
+                <div id="datepicker-673949" class="datepicker" style="display: none;">
+                    <input type="text" class="form-control form-icon-trailing">
+                    <button id="datepicker-toggle-615511" type="button" class="datepicker-toggle-button" data-mdb-toggle="datepicker">
+                        <i class="far fa-calendar datepicker-toggle-icon"></i>
+                    </button>
+                </div>
+                <div id="timepicker-10443" class="timepicker" style="display: none;">
+                    <input type="text" class="form-control timepicker-input">
+                    <button id="timepicker-toggle-42321" tabindex="0" type="button" class="timepicker-toggle-button" data-mdb-toggle="timepicker">
+                        <i class="far fa-clock fa-sm timepicker-icon"></i>
+                    </button>
+                </div>
+                <button type="button" class="datetimepicker-toggle-button" data-mdb-toggle="datetimepicker">
+                    <i class="far fa-calendar datepicker-toggle-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Create</button>
+    </form>
+</div>
+</body>
+</html>

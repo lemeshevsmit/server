@@ -14,7 +14,10 @@
 <div class="container">
     <h1>Login success! Welcome! </h1>
 </div>
-<form action="/auth/login" method="POST">
+<form action="/api/messages" method="GET">
+    <button class="btn btn-primary" type="submit">See messages</button>
+</form>
+<form action="/logout" method="POST">
     <button class="btn btn-secondary" type="submit">Logout</button>
 </form>
 </body>

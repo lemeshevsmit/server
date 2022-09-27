@@ -12,7 +12,7 @@
 <div class="container">
     <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted" th:text="'Message # '+${message.getId()}"> MESSAGE</span>
-        <form th:method="delete" th:action="@{/api/messages/{id}(id=${message.getId()})}">
+        <form th:method="DELETE" th:action="@{/api/messages/{id}(id=${message.getId()})}">
         <p style=" margin-bottom: 0px; margin-top: 5px;">
             <a href="/api/messages" class="btn btn-primary">Back</a>
             <a th:href="@{/api/messages/{id}/edit(id=${message.getId()})}" class="btn btn-primary">Edit</a>
@@ -52,24 +52,6 @@
             <span class="text-muted" th:text="${message.getPostDate()}">VALUE</span>
         </li>
     </ul>
-
-    <!--    <form class="card p-2">-->
-    <!--        <div class="container">-->
-    <!--            <p>-->
-    <!--                <button type="submit" class="btn btn-primary">Back</button>-->
-    <!--                <button type="submit" class="btn btn-primary">Edit</button>-->
-    <!--                <button type="submit" class="btn btn-secondary">Delete</button>-->
-    <!--            </p>-->
-    <!--        </div>-->
-    <!--    </form>-->
 </div>
-
-
-<!--<a th:href="@{/api/messages/{id}/edit(id=${message.getId()})}">Edit</a>-->
-
-<!--<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">-->
-<!--    <input type="submit" value="Delete user"/>-->
-<!--</form>-->
-
 </body>
 </html>

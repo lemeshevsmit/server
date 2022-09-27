@@ -37,16 +37,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/api/login")
+                .permitAll()
+                .defaultSuccessUrl("/api/success")
+                .and()
+                .logout()
+                .permitAll();
+
+//                .and()
+//                .exceptionHandling()
+//                .accessDeniedPage("/api/denied");
+
 //                .loginPage("/auth/login").permitAll()
 //                .defaultSuccessUrl("/auth/success")
 //                .and()
 //                .logout()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout", "POST"))
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/api/logout", "POST"))
 //                .invalidateHttpSession(true)
 //                .clearAuthentication(true)
 //                .deleteCookies("JSESSIONID")
-//                .logoutSuccessUrl("/auth/login");
+//                .logoutSuccessUrl("/api/login");
     }
 
     @Override

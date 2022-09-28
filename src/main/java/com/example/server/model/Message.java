@@ -6,6 +6,8 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Length;
 
 
 import javax.persistence.Column;
@@ -36,11 +38,11 @@ public class Message {
     @NonNull
     @Email(message = "Email should be valid")
     private String to;
-    @Column(name = "subject", nullable = false)
+    @Column(name = "subject", nullable = false, length = 30)
     @NonNull
     @Size(min = 2, max = 30, message = "Subject should be between 2 and 30 characters")
     private String subject;
-    @Column(name = "text", nullable = false)
+    @Column(name = "text", nullable = false, columnDefinition = "varchar")
     @NonNull
     private String text;
     @Column(name = "post_date", nullable = false)

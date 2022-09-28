@@ -39,7 +39,7 @@ public class MessageController {
     @PreAuthorize("hasAuthority('can:read')")
     public String findAllMessages(Model model) {
         model.addAttribute("messages", service.getMessages());
-        return "messages/index";
+        return "messages/list";
     }
 
     @GetMapping("/{id}")

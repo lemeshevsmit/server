@@ -10,14 +10,10 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Length;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 @Table(name = "messages")
@@ -47,5 +43,6 @@ public class Message {
     private String text;
     @Column(name = "post_date", nullable = false)
     @NonNull
-    private String postDate;
+    //@Temporal(TemporalType.TIMESTAMP)
+    private Date postDate;
 }
